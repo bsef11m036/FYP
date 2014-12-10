@@ -1,0 +1,102 @@
+﻿@model FYP.Models.Search
+@{
+    Layout = null;
+}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-ui-1.8.24.js"></script>
+<script src="../Scripts/bootstrap.js"></script>
+<link href="../Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/searchBar.css" rel="stylesheet" />
+<!--/.navbar -->
+<script type="text/javascript">
+    function search() {
+        var t = $("#searchBar").val();
+        $("#this1").text("");
+        $("#this1").load("SearchResult", { query: t });
+    }
+    $(document).ready(function () {
+        $("#searchBar").autocomplete({
+            source: '/Account/SearchAutoComp',
+
+        });
+    });
+</script>
+
+<div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="#" name="top">Brand Name</a>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li><a href="#"><i class="icon-home icon-white"></i> Home</a></li>
+                    <li class="divider-vertical"></li>
+                    <li class="active"><a href="#"><i class="icon-file icon-white"></i> Pages</a></li>
+                    <li class="divider-vertical"></li>
+                    <li><a href="#"><i class="icon-envelope icon-white"></i> Messages</a></li>
+                    <li class="divider-vertical"></li>
+                    <li><a href="#"><i class="icon-signal icon-white"></i> Stats</a></li>
+                    <li class="divider-vertical"></li>
+                    <li><a href="#"><i class="icon-lock icon-white"></i> Permissions</a></li>
+                    <li class="divider-vertical"></li>
+                </ul>
+                <div class="btn-group pull-right">
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="icon-user"></i> admin	<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#"><i class="icon-wrench"></i> Settings</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="icon-share"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+        <!--/.container-fluid -->
+    </div>
+    <!--/.navbar-inner -->
+</div>
+<!--/.navbar -->
+
+<div class="col-lg-5 col-lg-push-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <div id="imaginary_container">
+                    <div class="input-group stylish-input-group">
+                        <input type="text" id="searchBar" class="form-control" placeholder="Search" style="font-size:x-large">
+                        <span class="input-group-addon">
+                            <button onclick="search()">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <ul class="nav nav-tabs" data-tabs="tabs">
+        <li class="active"><a data-toggle="tab" href="#this1">My Search</a></li>
+        <li><a data-toggle="tab" href="#google1">Google Search</a></li>
+
+    </ul>
+
+    <br />
+
+    <div class="tab-content">
+        <div class="tab-pane active" id="this1">
+
+        </div>
+        <div class="tab-pane" id="google1">
+        </div>
+    </div>
+</div>
