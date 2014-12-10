@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = null;
+
 }
 
 @model FYP.Models.Search
@@ -30,9 +30,18 @@
                     </ul>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-                    <h3><a href="#" title="">@s.UserName</a></h3>
+                    <h3>
+                        <a href="#" title="">@s.UserName</a>
+                        @if(s.IsOnline==true)
+                        {
+                            <span class="pull-right" style="color:green;font-size:x-large">Online </span>
+                        }
+                        else
+                        {
+                            <span class="pull-right" style="color:green;font-size:x-large">Ofline </span>
+                        }
+                    </h3>
                     <p>@s.SearchQuery</p>
-                    <span class="plus"><a href="#" ><i class="glyphicon glyphicon-plus"></i></a></span>
                 </div>
                 <span class="clearfix borda"></span>
             </article>
